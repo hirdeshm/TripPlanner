@@ -1,5 +1,9 @@
 from fastapi import APIRouter, HTTPException
 
+from fastapi import APIRouter
+
+router = APIRouter(prefix="/api/trip", tags=["Trip"])
+
 from app.schemas.trip import TripRequest
 from app.services.trip_generator import generate_itinerary
 
