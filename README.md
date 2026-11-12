@@ -1,5 +1,12 @@
 # FlamTrip – AI Trip Planner
+## Live Demo
 
+- **Frontend:** [FlamTrip – AI Trip Planner](https://trip-planner-hdww.vercel.app)
+- **Backend API Documentation:** [FastAPI Swagger Docs](https://trip-planner-tawny-xi.vercel.app/docs)
+
+## GitHub Repository
+
+[View Source Code on GitHub](https://github.com/hirdeshm/TripPlanner)
 FlamTrip is an AI-powered trip planning application that generates structured travel itineraries based on a user's travel requirements. It uses the Groq API to generate personalized itineraries and provides an interactive Kanban-style board to manage destinations and activities.
 
 ## Features
