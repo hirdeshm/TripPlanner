@@ -1,4 +1,4 @@
-const API_URL = import.meta.env.API_URL;
+const API_URL = import.meta.env.API_URL_VITE;
 
 export async function generateTrip(description) {
     const response = await fetch(`${API_URL}/api/trip/generate`, {
