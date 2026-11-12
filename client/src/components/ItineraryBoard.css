@@ -1,0 +1,363 @@
+
+/* ========================================
+   1. BOARD WRAPPER
+======================================== */
+
+.board-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    padding: 20px 0;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border-color) transparent;
+}
+
+.itinerary-board {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    min-width: max-content;
+}
+
+
+/* ========================================
+   2. DAY COLUMN
+======================================== */
+
+.day-column {
+    width: 320px;
+    min-height: 450px;
+    padding: 16px;
+    box-sizing: border-box;
+
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
+
+    border-radius: 14px;
+    border: 2px solid transparent;
+
+    transition:
+        background 0.25s ease,
+        border-color 0.2s ease;
+}
+
+.day-column.drag-over {
+    border-color: var(--accent);
+    background: var(--accent-bg);
+}
+
+.day-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.day-header h2 {
+    font-size: 20px;
+    margin: 0;
+    color: var(--text-primary);
+}
+
+.day-header span {
+    font-size: 12px;
+    color: var(--text-secondary);
+}
+
+.day-column h4 {
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+
+/* ========================================
+   3. DESTINATION LIST
+======================================== */
+
+.stops-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    min-height: 300px;
+}
+
+
+/* ========================================
+   4. DESTINATION CARD
+======================================== */
+
+.stop-card {
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+
+    border-radius: 10px;
+    padding: 14px;
+
+    box-shadow: var(--card-shadow);
+    border: 1px solid var(--border-color);
+
+    transition:
+        background 0.25s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.stop-card:hover {
+    border-color: var(--accent);
+}
+
+.card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.drag-handle {
+    cursor: grab;
+    border: none;
+    background: transparent;
+    color: var(--text-secondary);
+    font-size: 24px;
+    touch-action: none;
+}
+
+.drag-handle:active {
+    cursor: grabbing;
+}
+
+.card-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.card-actions button {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    color: var(--accent);
+    font-size: 14px;
+    padding: 5px;
+}
+
+.card-actions button:hover {
+    color: var(--accent-hover);
+}
+
+.stop-card h3 {
+    margin-bottom: 6px;
+    color: var(--text-primary);
+}
+
+.stop-card p {
+    color: var(--text-secondary);
+    font-size: 14px;
+}
+
+.stop-meta {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+
+/* ========================================
+   5. EMPTY DAY
+======================================== */
+
+.empty-day {
+    text-align: center;
+    color: var(--text-secondary);
+
+    border: 2px dashed var(--border-color);
+    border-radius: 10px;
+
+    padding: 25px 10px;
+}
+
+
+/* ========================================
+   6. MODAL BACKDROP
+======================================== */
+
+.modal-backdrop {
+    position: fixed;
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.55);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    z-index: 1000;
+    padding: 16px;
+
+    backdrop-filter: blur(3px);
+}
+
+
+/* ========================================
+   7. EDIT / ADD MODAL
+======================================== */
+
+.edit-modal {
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+
+    padding: 25px;
+    border-radius: 14px;
+
+    width: 100%;
+    max-width: 450px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    max-height: 90vh;
+    overflow-y: auto;
+
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow);
+}
+
+.edit-modal h2,
+.edit-modal h3 {
+    color: var(--text-primary);
+}
+
+.edit-modal label {
+    color: var(--text-secondary);
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.edit-modal input,
+.edit-modal textarea {
+    width: 100%;
+    box-sizing: border-box;
+
+    padding: 10px;
+
+    background: var(--bg-primary);
+    color: var(--text-primary);
+
+    border: 1px solid var(--border-color);
+    border-radius: 7px;
+
+    font: inherit;
+    outline: none;
+
+    transition: border-color 0.2s ease;
+}
+
+.edit-modal input:focus,
+.edit-modal textarea:focus {
+    border-color: var(--accent);
+}
+
+.edit-modal input::placeholder,
+.edit-modal textarea::placeholder {
+    color: var(--text-secondary);
+}
+
+.edit-modal textarea {
+    min-height: 90px;
+    resize: vertical;
+}
+
+
+/* ========================================
+   8. MODAL ACTION BUTTONS
+======================================== */
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 12px;
+}
+
+.modal-actions button {
+    padding: 10px 15px;
+
+    cursor: pointer;
+    border-radius: 7px;
+
+    border: 1px solid var(--border-color);
+
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
+
+    transition: background 0.2s ease;
+}
+
+.modal-actions button:hover {
+    background: var(--accent-bg);
+}
+
+.modal-actions button[type="submit"] {
+    background: var(--accent);
+    color: white;
+    border-color: var(--accent);
+}
+
+.modal-actions button[type="submit"]:hover {
+    background: var(--accent-hover);
+}
+
+
+/* ========================================
+   9. ADD DESTINATION BUTTON
+======================================== */
+
+.add-stop-button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 12px;
+
+    border: 1px dashed var(--border-color);
+    border-radius: 8px;
+
+    background: transparent;
+    color: var(--accent);
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.add-stop-button:hover {
+    background: var(--accent-bg);
+    border-color: var(--accent);
+}
+
+
+/* ========================================
+   10. RESPONSIVE BOARD
+======================================== */
+
+@media (max-width: 600px) {
+    .board-wrapper {
+        padding: 12px 0;
+    }
+
+    .itinerary-board {
+        gap: 12px;
+    }
+
+    .day-column {
+        width: 290px;
+        min-height: 400px;
+        padding: 12px;
+    }
+
+    .edit-modal {
+        padding: 18px;
+    }
+}
