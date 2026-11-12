@@ -1,8 +1,11 @@
+
 import os
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-app = FastAPI()
+from app.routes.trip import router as trip_router
+
+app = FastAPI(title="FlamTrip API")
 
 frontend_url = os.getenv("FRONTEND_URL", "")
 
@@ -19,3 +22,5 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# Register trip API routes
+app.include_router(trip_router)
